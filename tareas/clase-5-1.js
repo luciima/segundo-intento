@@ -22,14 +22,19 @@ function crearFraseDeBienvenida(nombres,apellidos){
   return `Bienvenido, ${nombres} ${apellidos}!`;
 }
 
-function mostrarInformacion(nombresUsuario, apellidosUsuario, edadUsuario){
+function mostrarInformacion(nombres, apellidos, edad){
   const $fraseAMostrar = document.querySelector("#informacion-ingresada");
   $fraseAMostrar.setAttribute("class","");
-  $fraseAMostrar.innerText = `"La información ingresada es: ${informacionAMostrar(nombresUsuario,apellidosUsuario,edadUsuario)}`;
+  $fraseAMostrar.innerText = `La información ingresada es: ${informacionAMostrar(nombres,apellidos,edad)}`;
 }
 
 function informacionAMostrar(nombres,apellidos,edad){
   return `nombres: ${nombres}; apellidos: ${apellidos}; edad: ${edad}.`
+}
+
+function cambiarTitulo(fraseTitulo){
+  const $titulo = document.querySelector("h1");
+  $titulo.innerText = fraseTitulo;
 }
 
 const $nombresUsuario = document.querySelector("#nombres-usuario");
@@ -43,5 +48,6 @@ $botonEnviar.onclick = function(){
   const edadUsuario = $edadUsuario.value;
   const fraseDeBienvenida = crearFraseDeBienvenida(nombresUsuario,apellidosUsuario);
   mostrarInformacion(nombresUsuario,apellidosUsuario,edadUsuario);
+  cambiarTitulo(fraseDeBienvenida);
   return false;
 }
