@@ -15,3 +15,22 @@ Ejemplo form:
 
   <div id="resultado">Hola</div>
 */
+
+function crearFraseDeBienvenida(nombres,apellidos){
+  nombres = nombres.trim();
+  apellidos = apellidos.trim();
+  return `Bienvenido, ${nombres} ${apellidos}!`;
+}
+
+const $nombresUsuario = document.querySelector("#nombres-usuario");
+const $apellidosUsuario = document.querySelector("#apellidos-usuario");
+const $edadUsuario = document.querySelector("#edad-usuario");
+const $botonEnviar = document.querySelector("#boton-enviar");
+
+$botonEnviar.onclick = function(){
+  const nombresUsuario = $nombresUsuario.value;
+  const apellidosUsuario = $apellidosUsuario.value;
+  const edadUsuario = $edadUsuario.value;
+  const fraseDeBienvenida = crearFraseDeBienvenida(nombresUsuario,apellidosUsuario);
+  return false;
+}
