@@ -16,20 +16,18 @@ Ejemplo form:
   <div id="resultado">Hola</div>
 */
 
-function crearFraseDeBienvenida(nombres,apellidos){
-  nombres = nombres.trim();
-  apellidos = apellidos.trim();
+function crearFraseDeBienvenida(nombres, apellidos){
   return `Bienvenido, ${nombres} ${apellidos}!`;
 }
 
 function mostrarInformacion(nombres, apellidos, edad){
   const $fraseAMostrar = document.querySelector("#informacion-ingresada");
-  $fraseAMostrar.setAttribute("class","");
-  $fraseAMostrar.innerText = `La información ingresada es: ${informacionAMostrar(nombres,apellidos,edad)}`;
+  $fraseAMostrar.className = "";
+  $fraseAMostrar.innerText = crearFraseAMostrar(nombres,apellidos,edad);
 }
 
-function informacionAMostrar(nombres,apellidos,edad){
-  return `nombres: ${nombres}; apellidos: ${apellidos}; edad: ${edad}.`
+function crearFraseAMostrar(nombres, apellidos, edad){
+  return `La información ingresada es: nombres: ${nombres}; apellidos: ${apellidos}; edad: ${edad}.`
 }
 
 function cambiarTitulo(fraseTitulo){
@@ -37,15 +35,12 @@ function cambiarTitulo(fraseTitulo){
   $titulo.innerText = fraseTitulo;
 }
 
-const $nombresUsuario = document.querySelector("#nombres-usuario");
-const $apellidosUsuario = document.querySelector("#apellidos-usuario");
-const $edadUsuario = document.querySelector("#edad-usuario");
 const $botonEnviar = document.querySelector("#boton-enviar");
 
 $botonEnviar.onclick = function(){
-  const nombresUsuario = $nombresUsuario.value;
-  const apellidosUsuario = $apellidosUsuario.value;
-  const edadUsuario = $edadUsuario.value;
+  const nombresUsuario = document.querySelector("#nombres-usuario").value.trim();
+  const apellidosUsuario = document.querySelector("#apellidos-usuario").value.trim();
+  const edadUsuario = document.querySelector("#edad-usuario").value.trim();
   const fraseDeBienvenida = crearFraseDeBienvenida(nombresUsuario,apellidosUsuario);
   mostrarInformacion(nombresUsuario,apellidosUsuario,edadUsuario);
   cambiarTitulo(fraseDeBienvenida);
