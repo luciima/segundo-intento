@@ -16,18 +16,10 @@ Ejemplo form:
   <div id="resultado">Hola</div>
 */
 
-function crearFraseDeBienvenida(nombres, apellidos){
-  return `Bienvenido, ${nombres} ${apellidos}!`;
-}
-
 function mostrarInformacion(nombres, apellidos, edad){
   const $fraseAMostrar = document.querySelector("#informacion-ingresada");
   $fraseAMostrar.className = "";
-  $fraseAMostrar.innerText = crearFraseAMostrar(nombres,apellidos,edad);
-}
-
-function crearFraseAMostrar(nombres, apellidos, edad){
-  return `La información ingresada es: nombres: ${nombres}; apellidos: ${apellidos}; edad: ${edad}.`
+  $fraseAMostrar.innerText = `La información ingresada es: nombres: ${nombres}; apellidos: ${apellidos}; edad: ${edad}.`;
 }
 
 function cambiarTitulo(fraseTitulo){
@@ -41,8 +33,7 @@ $botonEnviar.onclick = function(){
   const nombresUsuario = document.querySelector("#nombres-usuario").value.trim();
   const apellidosUsuario = document.querySelector("#apellidos-usuario").value.trim();
   const edadUsuario = document.querySelector("#edad-usuario").value.trim();
-  const fraseDeBienvenida = crearFraseDeBienvenida(nombresUsuario,apellidosUsuario);
   mostrarInformacion(nombresUsuario,apellidosUsuario,edadUsuario);
-  cambiarTitulo(fraseDeBienvenida);
+  cambiarTitulo(`Bienvenido, ${nombresUsuario} ${apellidosUsuario}!`);
   return false;
 }
