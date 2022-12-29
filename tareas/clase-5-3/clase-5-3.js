@@ -55,17 +55,31 @@ function mostrarFraseResultado(resultado) {
     $fraseResultado.className = "";
 }
 
+function borrarInputsAnteriores($form) {
+    while ($form.lastElementChild !== $botonOK) {
+        $form.lastElementChild.remove();
+    }
+}
+
+function resetearResultado() {
+    const $fraseResultado = document.querySelector("strong");
+    $fraseResultado.innerText = "";
+    $fraseResultado.className = "oculto";
+}
+
 const $botonOK = document.querySelector("#boton-ok");
 const $botonCalcularTotal = crearBotonCalcular();
 $botonOK.onclick = function () {
     const cantidadVideos = document.querySelector("#cantidad-videos").value;
     const $formulario = document.querySelector("form");
+    borrarInputsAnteriores($formulario);
+    resetearResultado();
     for (let i = 1; i <= cantidadVideos; i++) {
+        $formulario.appendChild(document.createElement("br"));
         $formulario.appendChild(crearLabel(i));
         $formulario.appendChild(crearInput("horas"));
         $formulario.appendChild(crearInput("minutos"));
         $formulario.appendChild(crearInput("segundos"));
-        $formulario.appendChild(document.createElement("br"));
     }
     $formulario.appendChild($botonCalcularTotal);
     return false;
