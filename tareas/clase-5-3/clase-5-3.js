@@ -49,6 +49,12 @@ function calcularTotal(lista) {
     return total;
 }
 
+function mostrarFraseResultado(resultado) {
+    const $fraseResultado = document.querySelector("strong");
+    $fraseResultado.innerText = `El tiempo total de los videos es ${resultado}`;
+    $fraseResultado.className = "";
+}
+
 const $botonOK = document.querySelector("#boton-ok");
 const $botonCalcularTotal = crearBotonCalcular();
 $botonOK.onclick = function () {
@@ -70,5 +76,6 @@ $botonCalcularTotal.onclick = function () {
     const minutos = calcularTotal(document.querySelectorAll(".minutos"));
     const segundos = calcularTotal(document.querySelectorAll(".segundos"));
     const resultado = convertirATiempoValido(horas, minutos, segundos);
+    mostrarFraseResultado(resultado);
     return false;
 };
