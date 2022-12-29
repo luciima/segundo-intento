@@ -39,7 +39,37 @@ function crearInputSegundos() {
     return segundosDuracion;
 }
 
+function crearBotonCalcular() {
+    const $botonCalcular = document.createElement("button");
+    $botonCalcular.setAttribute("id", "boton-calcular-total");
+    $botonCalcular.innerText = "Calcular tiempo total";
+    return $botonCalcular;
+}
+
+function sumarHorasMinutosSegundos(horas, minutos, segundos) {
+    minutos = minutos + parseInt(segundos / 60);
+    segundos = segundos % 60;
+    horas = horas + parseInt(minutos / 60);
+    minutos = minutos % 60;
+    if (segundos / 10 < 1) {
+        segundos = "0" + segundos;
+    }
+    if (minutos / 10 < 1) {
+        minutos = "0" + minutos;
+    }
+    return `${horas}:${minutos}:${segundos}`;
+}
+
+function calcularTotal(lista) {
+    let total = 0;
+    for (let node of lista) {
+        total += Number(node.value);
+    }
+    return total;
+}
+
 const $botonOK = document.querySelector("#boton-ok");
+const $botonCalcularTotal = crearBotonCalcular();
 $botonOK.onclick = function () {
     const cantidadVideos = document.querySelector("#cantidad-videos").value;
     const $formulario = document.querySelector("form");
@@ -50,5 +80,14 @@ $botonOK.onclick = function () {
         $formulario.appendChild(crearInputSegundos());
         $formulario.appendChild(crearBR());
     }
+    $formulario.appendChild($botonCalcularTotal);
+    return false;
+};
+
+$botonCalcularTotal.onclick = function () {
+    const horas = calcularTotal(document.querySelectorAll(".horas"));
+    const minutos = calcularTotal(document.querySelectorAll(".minutos"));
+    const segundos = calcularTotal(document.querySelectorAll(".segundos"));
+    const resultado = sumarHorasMinutosSegundos(horas, minutos, segundos);
     return false;
 };
