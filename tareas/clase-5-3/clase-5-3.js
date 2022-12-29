@@ -13,30 +13,11 @@ function crearLabel(i) {
     return etiqueta;
 }
 
-function crearBR() {
-    const br = document.createElement("br");
-    return br;
-}
-
-function crearInputHoras() {
-    const horasDuracion = document.createElement("input");
-    horasDuracion.className = "horas";
-    horasDuracion.type = "number";
-    return horasDuracion;
-}
-
-function crearInputMinutos() {
-    const minutosDuracion = document.createElement("input");
-    minutosDuracion.className = "minutos";
-    minutosDuracion.type = "number";
-    return minutosDuracion;
-}
-
-function crearInputSegundos() {
-    const segundosDuracion = document.createElement("input");
-    segundosDuracion.className = "segundos";
-    segundosDuracion.type = "number";
-    return segundosDuracion;
+function crearInput(nombreClass) {
+    const input = document.createElement("input");
+    input.className = nombreClass;
+    input.type = "number";
+    return input;
 }
 
 function crearBotonCalcular() {
@@ -46,7 +27,7 @@ function crearBotonCalcular() {
     return $botonCalcular;
 }
 
-function sumarHorasMinutosSegundos(horas, minutos, segundos) {
+function convertirATiempoValido(horas, minutos, segundos) {
     minutos = minutos + parseInt(segundos / 60);
     segundos = segundos % 60;
     horas = horas + parseInt(minutos / 60);
@@ -75,10 +56,10 @@ $botonOK.onclick = function () {
     const $formulario = document.querySelector("form");
     for (let i = 1; i <= cantidadVideos; i++) {
         $formulario.appendChild(crearLabel(i));
-        $formulario.appendChild(crearInputHoras());
-        $formulario.appendChild(crearInputMinutos());
-        $formulario.appendChild(crearInputSegundos());
-        $formulario.appendChild(crearBR());
+        $formulario.appendChild(crearInput("horas"));
+        $formulario.appendChild(crearInput("minutos"));
+        $formulario.appendChild(crearInput("segundos"));
+        $formulario.appendChild(document.createElement("br"));
     }
     $formulario.appendChild($botonCalcularTotal);
     return false;
@@ -88,6 +69,6 @@ $botonCalcularTotal.onclick = function () {
     const horas = calcularTotal(document.querySelectorAll(".horas"));
     const minutos = calcularTotal(document.querySelectorAll(".minutos"));
     const segundos = calcularTotal(document.querySelectorAll(".segundos"));
-    const resultado = sumarHorasMinutosSegundos(horas, minutos, segundos);
+    const resultado = convertirATiempoValido(horas, minutos, segundos);
     return false;
 };
