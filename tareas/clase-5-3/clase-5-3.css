@@ -10,3 +10,7 @@ form {
 .oculto {
     display: none;
 }
+
+label {
+    font-style: italic;
+}
