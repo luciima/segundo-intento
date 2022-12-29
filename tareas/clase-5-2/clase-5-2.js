@@ -16,3 +16,11 @@ $botonCalcular.onclick = function(){
     $inputResultado.value = `Su salario mensual es $${salarioMensual}.`; 
     return false;
 }
+
+const $botonReset = document.querySelector("#boton-reset");
+
+$botonReset.onclick = function(){
+    document.querySelector("#salario-anual").value = "";
+    $inputResultado.value = "";
+    return false;
+}
