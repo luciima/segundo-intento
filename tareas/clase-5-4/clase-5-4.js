@@ -56,3 +56,13 @@ function encontrarNumeroMasFrecuente(numeros) {
     return numeroMasFrecuente;
 }
 
+function armarLista() {
+    const $numeros = document.querySelectorAll("li");
+    const numeros = [];
+    for (let i = 0; i < $numeros.length; i++) {
+        numeros.push($numeros[i].innerText);
+    }
+    return numeros;
+}
+
+const numeros = armarLista();
