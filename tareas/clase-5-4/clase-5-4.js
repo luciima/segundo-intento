@@ -65,4 +65,22 @@ function armarLista() {
     return numeros;
 }
 
+function calcularResultados(lista) {
+    const resultados = {
+        "promedio-numeros": calcularPromedio(lista),
+        "numero-mas-pequeno": encontrarMenorNumero(lista),
+        "numero-mas-grande": encontrarMayorNumero(lista),
+        "numero-mas-frecuente": encontrarNumeroMasFrecuente(lista),
+    };
+    return resultados;
+}
+
+function mostrarResultados() {
+    for (let key in resultados) {
+        document.querySelector(`#${key}`).innerText += ` ${resultados[key]}.`;
+    }
+}
+
 const numeros = armarLista();
+const resultados = calcularResultados(numeros);
+mostrarResultados();
