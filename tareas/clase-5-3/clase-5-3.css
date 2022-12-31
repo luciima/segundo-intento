@@ -5,10 +5,12 @@ body {
     max-width:550px;
     line-height:1.6;
     font-size:18px;
+    color:white;
 }
 
-form {
-    color: white;
+p {
+    line-height: 1.3;
+    text-align: justify;
 }
 
 .oculto {
@@ -17,8 +19,4 @@ form {
 
 label {
     font-style: italic;
-}
-
-strong {
-    color: white;
 }
